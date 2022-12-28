@@ -8,7 +8,7 @@ const moment = require('moment');
 require('dotenv').config();
 
 const passport = require('passport');
-const protect = require('./src/Middleware/authMid')
+const protect = require('./src/middleware/authMid')
 const jwtSettings = require('./src/config/jwtSettings');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
