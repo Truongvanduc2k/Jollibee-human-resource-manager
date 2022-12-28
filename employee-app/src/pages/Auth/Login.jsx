@@ -57,9 +57,9 @@ export default function Login1() {
 
     try {
       const { data } = await api.post("/auth/employee", { email, password });
-      addUserToLocalStorage(data);
-      setValues({ ...values, loading: false });
-      navigate("/employee", { replace: true });
+      await addUserToLocalStorage(data);
+      await setValues({ ...values, loading: false });
+      await navigate("/employee", { replace: true });
     } catch (error) {
       toast.error("Invalid email or password");
       setValues({ ...values, loading: false });

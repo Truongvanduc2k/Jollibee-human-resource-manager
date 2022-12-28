@@ -25,12 +25,12 @@ const Login = () => {
     axios
       .post(`${WEB_SERVER_URL}/auth/manager`, data)
       .then(async (response) => {
-        localStorage.setItem("adminToken", JSON.stringify(response.data));
+        await localStorage.setItem("adminToken", JSON.stringify(response.data));
         // Zustand: method
-        await signIn({
-          payload: response.data.payload,
-          token: response.data.token,
-        });
+        // await signIn({
+        //   payload: response.data.payload,
+        //   token: response.data.token,
+        // });
         message.success("Login success");
         if (
           response.data.payload.role === "manager" ||
