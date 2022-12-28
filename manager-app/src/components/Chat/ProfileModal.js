@@ -12,10 +12,11 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
+import { WEB_SERVER_URL } from "../../config/serverURL";
 
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  
+
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
       {children ? (
@@ -50,7 +51,7 @@ const ProfileModal = ({ user, children }) => {
               borderRadius="full"
               boxSize="150px"
               alt={user.fullname}
-              src={`${process.env.REACT_APP_BASE_URL}${user.avatarUrl}`}
+              src={`${WEB_SERVER_URL}${user.avatarUrl}`}
             />
             <Text fontSize={{ base: "28px", md: "30px" }} fontFamily="Poppins">
               Email: {user.email}

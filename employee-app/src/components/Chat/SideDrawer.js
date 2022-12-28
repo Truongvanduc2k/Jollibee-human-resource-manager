@@ -33,6 +33,7 @@ import { useAppContext } from "../../context/ChatProvider";
 import ProfileModal from "./ProfileModal";
 import { removeUserFromLocalStorage } from "../../utils/localStorage";
 import { getSender } from "../../config/chat";
+import { WEB_SERVER_URL } from "../../config/serverURL";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -156,7 +157,7 @@ const SideDrawer = () => {
                 name={user.fullname}
                 src={
                   avatar
-                    ? `${process.env.REACT_APP_BASE_URL}${avatar}`
+                    ? `${WEB_SERVER_URL}${avatar}`
                     : "https://joeschmoe.io/api/v1/random"
                 }
               />

@@ -1,8 +1,9 @@
 import axios from "axios";
+import { WEB_SERVER_URL } from "../config/serverURL";
 import { getUserFromLocalStorage } from "./localStorage";
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: WEB_SERVER_URL,
 });
 
 api.interceptors.request.use(

@@ -18,7 +18,8 @@ import RegisterSchedule from './pages/Users/WorkSchedule/RegisterSchedule';
 import ResetPassword from './pages/Auth/ResetPassword';
 
 import io from "socket.io-client";
-const socket = io.connect(process.env.REACT_APP_SOCKET_ENDPOINT);
+import { WEB_SERVER_URL } from './config/serverURL';
+const socket = io.connect(WEB_SERVER_URL);
 
 function App() {
   return (
@@ -31,11 +32,11 @@ function App() {
           <Route path="infors" element={<Infors />} />
           <Route index element={<News />} />
           <Route path="workschedules" element={<WorkSchedules />} />
-          <Route path="myworkschedules" element={<MySchedules socket={socket}/>} />
+          <Route path="myworkschedules" element={<MySchedules socket={socket} />} />
           <Route path="registerschedules" element={<RegisterSchedule />} />
           <Route path="dayoffs" element={<DayOff />} />
           <Route path="statisticals" element={<Statisticals />} />
-          <Route path="chats" element={<Chats socket={socket}/>} />
+          <Route path="chats" element={<Chats socket={socket} />} />
           <Route path="orthers" element={<Orthers />} />
           <Route path="*" element={<NotFound />} />
         </Route>

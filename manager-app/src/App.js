@@ -20,9 +20,10 @@ import Infor from "./pages/Share/Infors";
 import Timekeeping from "./pages/Admin/Statisticals/Timekeeping";
 import QrCode from "./pages/Admin/ManagerWorks/QrCode";
 import io from "socket.io-client";
+import { WEB_SERVER_URL } from "./config/serverURL";
 
 moment.locale("vi");
-const socket = io.connect(process.env.REACT_APP_SOCKET_ENDPOINT);
+const socket = io.connect(WEB_SERVER_URL);
 
 function App() {
 
