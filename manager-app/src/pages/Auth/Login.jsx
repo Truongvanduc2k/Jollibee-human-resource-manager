@@ -11,7 +11,6 @@ import {
 } from "antd";
 import React, { useState } from "react";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
-import Layout, { Content } from "antd/lib/layout/layout";
 import axios from "axios";
 import { WEB_SERVER_URL } from "../../config/serverURL";
 import useAuth from "../../hooks/useAuth";
