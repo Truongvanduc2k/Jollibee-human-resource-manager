@@ -6,7 +6,7 @@ var passport = require('passport');
 var jwt = require('jsonwebtoken');
 const jwtSettings = require('../config/jwtSettings');
 const { allowRoles } = require('../middleware/allowRoles');
-const upload = require('../Middleware/upload');
+const upload = require('../middleware/upload');
 var multer = require('multer');
 const {
   createUser,

@@ -5,7 +5,7 @@ var { validateSchema } = require('../middleware/validate');
 var passport = require('passport');
 var jwt = require('jsonwebtoken');
 const jwtSettings = require('../config/jwtSettings');
-const { allowRoles } = require('../Middleware/allowRoles');
+const { allowRoles } = require('../middleware/allowRoles');
 const {
   createNew,
   getNews,

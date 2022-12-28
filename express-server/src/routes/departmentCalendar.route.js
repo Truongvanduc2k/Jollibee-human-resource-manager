@@ -3,7 +3,7 @@ var router = express.Router();
 var { authValidation } = require('../validations/index');
 var { validateSchema } = require('../middleware/validate');
 var passport = require('passport');
-const { allowRoles } = require('../Middleware/allowRoles');
+const { allowRoles } = require('../middleware/allowRoles');
 const {
   createDepartmentCalendar,
   getAllDepartmentCalendars,
