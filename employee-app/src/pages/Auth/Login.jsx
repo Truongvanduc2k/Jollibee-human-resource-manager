@@ -26,7 +26,7 @@ const CFaLock = chakra(FaLock);
 export default function Login1() {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
-  const { payload, signIn } = useAuth((state) => state);
+  const { signIn } = useAuth((state) => state);
 
   const navigate = useNavigate();
 
@@ -55,11 +55,11 @@ export default function Login1() {
     }
     axios
       .post(`${WEB_SERVER_URL}/auth/employee`, { email, password })
-      .then((response) => {
+      .then(async (response) => {
         // Zustand: method
         toast.success("Đăng nhập thành công");
-        signIn(response.data);
-        navigate("/employee", { replace: true });
+        await signIn(response.data);
+        await navigate("/employee", { replace: true });
       })
       .catch((err) => {
         toast.error("Đăng nhập không thành công!");

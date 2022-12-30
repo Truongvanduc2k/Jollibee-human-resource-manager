@@ -3,11 +3,12 @@ import { Button, Table, Input, DatePicker, Tag, Row, Col, Divider } from "antd";
 import axios from "axios";
 import moment from "moment";
 import { WEB_SERVER_URL } from "../../config/serverURL";
-import { BEARER_TOKEN } from "../../config/auth";
+import useAuth from "../../hooks/useAuth";
 
 moment.locale("vi");
 
 export default function WorkSchedules() {
+  const { BEARER_TOKEN } = useAuth((state) => state);
   const [loading, setLoading] = useState(false);
   const [pageSize, setPageSize] = useState(10);
   const [page, setPage] = useState(1);

@@ -32,11 +32,12 @@ import {
 import axios from "axios";
 import moment from "moment";
 import { WEB_SERVER_URL } from "../../../config/serverURL";
-import { BEARER_TOKEN, DEPARTMENT_ID, USER_ID } from "../../../config/auth";
+import useAuth from "../../../hooks/useAuth";
 
 moment.locale("vi");
 
 export default function WorkSchedules() {
+  const { BEARER_TOKEN, USER_ID, DEPARTMENT_ID } = useAuth((state) => state);
   const columns = [
     {
       title: "Ngày",

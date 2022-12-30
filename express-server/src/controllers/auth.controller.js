@@ -63,11 +63,12 @@ const auth = catchAsync(async (req, res) => {
 
     res.status(200).json({
       _id: login[0]._id,
-      token,
       fullname: login[0].fullname,
       email: login[0].email,
       avatarUrl: login[0].avatarUrl,
-      payload,
+      role: login[0].role,
+      departmentId: login[0].departmentId,
+      token,
     });
     return;
   }

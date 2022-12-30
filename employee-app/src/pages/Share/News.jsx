@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { Button, Col, Layout, Modal, Row } from "antd";
 import Post from "../../components/News/Post";
-import { BEARER_TOKEN } from "../../config/auth.js";
+import useAuth from "../../hooks/useAuth";
 import { WEB_SERVER_URL } from "../../config/serverURL.js";
 import Search from "antd/lib/input/Search.js";
 
@@ -17,6 +17,7 @@ export default function News() {
 
   const [visibleGimList, setVisibleGimList] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { BEARER_TOKEN } = useAuth((state) => state);
 
   // lấy API khởi chạy
   useEffect(() => {

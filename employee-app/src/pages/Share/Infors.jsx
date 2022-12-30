@@ -29,22 +29,18 @@ import {
 import axios from "axios";
 import moment from "moment";
 import { WEB_SERVER_URL } from "../../config/serverURL";
-import { AVATAR_URL, BEARER_TOKEN } from "../../config/auth";
+import useAuth from "../../hooks/useAuth";
 import TextArea from "antd/lib/input/TextArea";
 import { Content, Footer, Header } from "antd/lib/layout/layout";
 import { GiPositionMarker, GiSkills } from "react-icons/gi";
 import { TbCertificate } from "react-icons/tb";
-import { MdPassword } from "react-icons/md";
 import {
-  AiFillBell,
   AiFillDollarCircle,
-  AiTwotoneEdit,
   AiTwotoneMail,
 } from "react-icons/ai";
 
 import {
   RiFileUserFill,
-  RiLuggageDepositFill,
   RiBankFill,
 } from "react-icons/ri";
 import {
@@ -52,14 +48,13 @@ import {
   FaHourglassStart,
   FaIdCard,
   FaTransgender,
-  FaUserEdit,
   FaUserTie,
 } from "react-icons/fa";
-import { DownloadOutlined } from "@ant-design/icons";
 
 moment().locale("vi");
 
 export default function ManagerUser() {
+  const { BEARER_TOKEN } = useAuth((state) => state);
   const [user, setUser] = useState({});
 
   const [file, setFile] = useState(null);

@@ -6,7 +6,7 @@ import { GoSignIn, GoSignOut } from "react-icons/go";
 import axios from "axios";
 import moment from "moment";
 import { WEB_SERVER_URL } from "../../../config/serverURL";
-import { BEARER_TOKEN, USER_ID } from "../../../config/auth";
+import useAuth from "../../../hooks/useAuth";
 import randomString from "randomstring";
 
 moment.locale("vi");
@@ -14,6 +14,7 @@ const formatDate = "DD/MM/yyyy";
 const formatHour = "HH:mm";
 
 export default function MySchedules({ socket }) {
+  const { BEARER_TOKEN, USER_ID } = useAuth((state) => state);
   const columns = [
     {
       title: "Ngày",

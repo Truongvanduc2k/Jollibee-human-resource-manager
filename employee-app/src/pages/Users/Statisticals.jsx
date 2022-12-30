@@ -1,32 +1,20 @@
-import {
-  Avatar,
-  Button,
-  Card,
-  Col,
-  DatePicker,
-  Layout,
-  Row,
-  Table,
-  Tag,
-} from "antd";
+import { Button, Card, Col, DatePicker, Layout, Row, Table, Tag } from "antd";
 import { Content, Header } from "antd/lib/layout/layout";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import axios from "axios";
-import { BiAlarm, BiSad, BiWinkSmile, BiDollarCircle } from "react-icons/bi";
+import { BiSad, BiWinkSmile, BiDollarCircle } from "react-icons/bi";
 import { WEB_SERVER_URL } from "../../config/serverURL";
-import { BEARER_TOKEN, USER_ID } from "../../config/auth";
-import Meta from "antd/lib/card/Meta";
+import useAuth from "../../hooks/useAuth";
 
 moment.locale("vi");
 const formatDate = "DD/MM/yyyy";
 const formatHour = "HH:mm";
 
 export default function Statisticals() {
+  const { BEARER_TOKEN, USER_ID } = useAuth((state) => state);
   const [loading, setLoading] = useState(false);
   const [rangeDate, setRangeDate] = useState([]);
-
-  const [user, setUser] = useState({});
   const [inoutList, setInoutList] = useState([]);
   const [bonusList, setBonusList] = useState([]);
 
