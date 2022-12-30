@@ -17,8 +17,6 @@ const ChatProvider = ({ children }) => {
 
   useEffect(() => {
     const loggedInUser = getUserFromLocalStorage();
-
-    console.log('logged in user')
     setUser(loggedInUser)
   }, []);
 

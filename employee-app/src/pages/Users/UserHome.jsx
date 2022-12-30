@@ -40,7 +40,6 @@ const UserHome = () => {
   };
 
   const LogOut = () => {
-    removeUserFromLocalStorage();
     signOut();
     navigate("/", { replace: true });
   };

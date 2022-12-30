@@ -1,15 +1,5 @@
-import {
-  Button,
-  Checkbox,
-  Form,
-  Input,
-  Col,
-  Row,
-  Avatar,
-  message,
-  Image,
-} from "antd";
-import React, { useState } from "react";
+import { Button, Checkbox, Form, Input, Col, Row, message, Image } from "antd";
+import React from "react";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { WEB_SERVER_URL } from "../../config/serverURL";
@@ -24,20 +14,11 @@ const Login = () => {
     const data = { ...values };
     axios
       .post(`${WEB_SERVER_URL}/auth/manager`, data)
-      .then(async (response) => {
-        await localStorage.setItem("adminToken", JSON.stringify(response.data));
+      .then((response) => {
         // Zustand: method
-        // await signIn({
-        //   payload: response.data.payload,
-        //   token: response.data.token,
-        // });
-        message.success("Login success");
-        if (
-          response.data.payload.role === "manager" ||
-          response.data.payload.role === "admin"
-        ) {
-          await navigate("/manager", { replace: true });
-        }
+        signIn(response.data);
+        navigate("/manager", { replace: true });
+        message.success("Đăng nhập thành công");
       })
       .catch((err) => {
         if (err.response.status === 401) {

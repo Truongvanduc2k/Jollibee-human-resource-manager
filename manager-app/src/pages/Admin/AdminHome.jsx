@@ -12,6 +12,7 @@ import {
   BellOutlined,
 } from "@ant-design/icons";
 import { AiFillBell, AiOutlineQrcode } from "react-icons/ai";
+import useAuth from "../../hooks/useAuth";
 import { VscSignOut } from "react-icons/vsc";
 import { Avatar, Col, Layout, Menu, Row, Badge, Button } from "antd";
 import React, { useEffect, useState } from "react";
@@ -30,8 +31,10 @@ function getItem(label, key, icon, children) {
 const AdminHome = () => {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
+  const { signOut } = useAuth((state) => state);
 
   const LogOut = () => {
+    signOut();
     navigate("/", { replace: true });
   };
 

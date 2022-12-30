@@ -1,11 +1,17 @@
 import create from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { persist, devtools } from 'zustand/middleware';
 
 const useAuth = create(
   devtools((set) => ({
-    auth: null,
-    signIn: (payload) => set(() => ({ auth: payload }), false, '@auth/signIn'),
-    signOut: () => set({ auth: null }, false, '@auth/signOut'),
+    payload: null,
+    signIn: (payload) => set(() => {
+      localStorage.setItem("adminToken", JSON.stringify(payload));
+      return ({ payload: payload });
+    }, false, '@auth/signIn'),
+    signOut: () => set(() => {
+      localStorage.removeItem("adminToken");
+      return { payload: null }
+    }, false, '@auth/signOut'),
   })),
 );
 

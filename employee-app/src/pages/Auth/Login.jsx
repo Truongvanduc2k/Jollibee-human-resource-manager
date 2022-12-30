@@ -13,14 +13,12 @@ import { Link } from "react-router-dom";
 import { chakra } from "@chakra-ui/react";
 import { Box, VStack, FormControl } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
+import axios from "axios";
 import { toast } from "react-toastify";
 import React, { useState, useEffect } from "react";
-import api from "../../utils/axios";
+import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import {
-  addUserToLocalStorage,
-  getUserFromLocalStorage,
-} from "../../utils/localStorage";
+import { WEB_SERVER_URL } from "../../config/serverURL";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -28,6 +26,7 @@ const CFaLock = chakra(FaLock);
 export default function Login1() {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+  const { payload, signIn } = useAuth((state) => state);
 
   const navigate = useNavigate();
 
@@ -54,24 +53,18 @@ export default function Login1() {
       setValues({ ...values, loading: false });
       return;
     }
-
-    try {
-      const { data } = await api.post("/auth/employee", { email, password });
-      await addUserToLocalStorage(data);
-      await setValues({ ...values, loading: false });
-      await navigate("/employee", { replace: true });
-    } catch (error) {
-      toast.error("Invalid email or password");
-      setValues({ ...values, loading: false });
-    }
+    axios
+      .post(`${WEB_SERVER_URL}/auth/employee`, { email, password })
+      .then((response) => {
+        // Zustand: method
+        toast.success("Đăng nhập thành công");
+        signIn(response.data);
+        navigate("/employee", { replace: true });
+      })
+      .catch((err) => {
+        toast.error("Đăng nhập không thành công!");
+      });
   };
-
-  // useEffect(() => {
-  //   const userLoged = getUserFromLocalStorage();
-  //   if(userLoged) {
-  //     navigate("/employee", { replace: true });
-  //   }
-  // }, [])
 
   return (
     <Box
