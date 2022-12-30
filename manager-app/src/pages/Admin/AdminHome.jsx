@@ -17,7 +17,6 @@ import { VscSignOut } from "react-icons/vsc";
 import { Avatar, Col, Layout, Menu, Row, Badge, Button } from "antd";
 import React, { useEffect, useState } from "react";
 import { WEB_SERVER_URL } from "../../config/serverURL";
-import { AVATAR_URL } from "../../config/auth";
 const { Header, Content, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -29,6 +28,7 @@ function getItem(label, key, icon, children) {
   };
 }
 const AdminHome = () => {
+  const { AVATAR_URL } = useAuth((state) => state);
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   const { signOut } = useAuth((state) => state);

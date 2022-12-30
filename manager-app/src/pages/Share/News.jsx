@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   Button,
   Col,
-  Divider,
   Form,
   Input,
   Layout,
@@ -14,16 +13,15 @@ import {
   Switch,
   Tooltip,
 } from "antd";
-import { TbPin, TbPinnedOff } from "react-icons/tb";
-import { Content, Footer, Header } from "antd/lib/layout/layout.js";
-import Sider from "antd/lib/layout/Sider.js";
+import { TbPinnedOff } from "react-icons/tb";
 import Post from "../../components/News/Post.jsx";
-import { AVATAR_URL, BEARER_TOKEN, FULLNAME } from "../../config/auth.js";
 import { WEB_SERVER_URL } from "../../config/serverURL.js";
+import useAuth from "../../hooks/useAuth";
 import TextArea from "antd/lib/input/TextArea.js";
 import Search from "antd/lib/input/Search.js";
 
 export default function News() {
+  const { BEARER_TOKEN, AVATAR_URL, FULLNAME } = useAuth((state) => state);
   const [newsList, setNewsList] = useState([]);
   const [gimList, setGimList] = useState([]);
 
@@ -37,6 +35,7 @@ export default function News() {
   const [formAdd] = Form.useForm();
   const [formUpdate] = Form.useForm();
 
+  console.log("jkạkankdfjnalskdlá");
   // lấy API khởi chạy
   useEffect(() => {
     getNewsPage(page);

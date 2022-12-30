@@ -10,27 +10,22 @@ import {
   notification,
   Space,
   Modal,
-  Upload,
   Row,
   Col,
-  Radio,
-  Select,
-  DatePicker,
 } from "antd";
 
 import {
   DeleteOutlined,
   EditOutlined,
-  SearchOutlined,
-  PlusOutlined,
 } from "@ant-design/icons";
 import axios from "axios";
 import { WEB_SERVER_URL } from "../../../config/serverURL";
-import { BEARER_TOKEN } from "../../../config/auth";
+import useAuth from "../../../hooks/useAuth";
 import TextArea from "antd/lib/input/TextArea";
 const { Search } = Input;
 
 export default function Position() {
+   const { BEARER_TOKEN } = useAuth((state) => state);
   const columns = [
     {
       title: "Tên chức vụ",

@@ -25,7 +25,7 @@ import {
 } from "@ant-design/icons";
 import axios from "axios";
 import { WEB_SERVER_URL } from "../../../config/serverURL";
-import { BEARER_TOKEN } from "../../../config/auth";
+import useAuth from "../../../hooks/useAuth";
 import moment from "moment";
 
 moment.locale("vi");
@@ -33,6 +33,7 @@ const formatHour = "HH:mm";
 const formatDate = "DD-MM-yyyy";
 
 const CreateSchedules = () => {
+  const { BEARER_TOKEN } = useAuth((state) => state);
   const [departmentsList, setDepartmentsList] = useState([]);
   const [shiftsList, setShiftsList] = useState([]);
   const [calendarList, setCalendarList] = useState([]);

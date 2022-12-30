@@ -21,7 +21,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import axios from "axios";
 import moment from "moment";
 import { WEB_SERVER_URL } from "../../../config/serverURL";
-import { BEARER_TOKEN } from "../../../config/auth";
+import useAuth from "../../../hooks/useAuth";
 const { Search } = Input;
 
 moment.locale("vi");
@@ -29,6 +29,7 @@ const formatDate = "DD/MM/yyyy";
 const formatHour = "HH:mm";
 
 export default function InOut() {
+  const { BEARER_TOKEN } = useAuth((state) => state);
   const [loading, setLoading] = useState(false);
   const [pageSize, setPageSize] = useState(10);
   const [page, setPage] = useState(1);

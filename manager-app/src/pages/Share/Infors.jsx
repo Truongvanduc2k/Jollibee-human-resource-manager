@@ -21,14 +21,14 @@ import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
 import moment from "moment";
 import { WEB_SERVER_URL } from "../../config/serverURL";
-import { BEARER_TOKEN } from "../../config/auth";
+import useAuth from "../../hooks/useAuth";
 import TextArea from "antd/lib/input/TextArea";
-import { calc } from "@chakra-ui/react";
 
 moment().locale("vi");
 const formatDate = "DD/MM/yyyy";
 
 export default function Infor() {
+  const { BEARER_TOKEN } = useAuth((state) => state);
   const [user, setUser] = useState({});
 
   const [file, setFile] = useState(null);

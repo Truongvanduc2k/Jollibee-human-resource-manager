@@ -29,11 +29,12 @@ import {
 import axios from "axios";
 import moment from "moment";
 import { WEB_SERVER_URL } from "../../../config/serverURL";
-import { BEARER_TOKEN } from "../../../config/auth";
+import useAuth from "../../../hooks/useAuth";
 import TextArea from "antd/lib/input/TextArea";
 const { Search } = Input;
 
 export default function BonusPunish() {
+  const { BEARER_TOKEN } = useAuth((state) => state);
   const columns = [
     {
       title: "Thời gian",

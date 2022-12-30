@@ -27,11 +27,12 @@ import {
 } from "@ant-design/icons";
 import axios from "axios";
 import { WEB_SERVER_URL } from "../../../config/serverURL";
-import { BEARER_TOKEN } from "../../../config/auth";
+import useAuth from "../../../hooks/useAuth";
 import TextArea from "antd/lib/input/TextArea";
 const { Search } = Input;
 
 export default function ManagerUser() {
+   const { BEARER_TOKEN } = useAuth((state) => state);
   const columns = [
     {
       title: "Ảnh",
