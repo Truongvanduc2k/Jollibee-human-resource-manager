@@ -16,8 +16,8 @@ const { isResetTokenValid } = require("../middleware/allowRoles")
 // login xong thì tạo token
 router.post("/requestPassReset", requestPasswordReset);
 // router.post('/resetPassword', resetPassword);
-router.post('/passwordReset',isResetTokenValid, resetPassword);
-router.get('/verifi-token',isResetTokenValid, (req, res)=> {
+router.post('/passwordReset', isResetTokenValid, resetPassword);
+router.get('/verifi-token', isResetTokenValid, (req, res) => {
   res.status(200).json({ oke: true });
 });
 
@@ -26,7 +26,7 @@ router.patch(
   passport.authenticate("jwt", { session: false }),
   userChangePassword
 );
-router.get("/users", protect, searchUser);
+router.get("/users", searchUser);
 router.post("/:role", auth);
 
 module.exports = router;
