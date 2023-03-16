@@ -344,7 +344,7 @@ export default function News() {
               },
             ]}
           >
-            <Input placeholder="Nhập tên chức vụ" />
+            <Input placeholder="Nhập tiêu đề thông báo" />
           </Form.Item>
           <Form.Item
             label="Nội dung thông báo"
